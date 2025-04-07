@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía de Implementación de Pagos - Minecraft by Jockerel</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .content-section {
+            background-color: rgba(255, 255, 255, 0.95);
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            border-radius: 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 4px solid rgba(76, 175, 80, 0.6);
+        }
+        
+        .content-section h2 {
+            color: #4CAF50;
+            margin-bottom: 1.5rem;
+        }
+        
+        code {
+            background-color: #f5f5f5;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+        
+        pre {
+            background-color: #f5f5f5;
+            padding: 1rem;
+            border-radius: 3px;
+            overflow-x: auto;
+            border-left: 4px solid #4CAF50;
+        }
+        
+        .step {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .platform-comparison {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        
+        .platform-comparison th, .platform-comparison td {
+            border: 1px solid #e5e7eb;
+            padding: 0.75rem;
+            text-align: left;
+        }
+        
+        .platform-comparison th {
+            background-color: #f3f4f6;
+        }
+        
+        .platform-comparison tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Minecraft by Jockerel</div>
+            <ul class="menu">
+                <li><a href="index.html">Inicio</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" style="min-height: 40vh;">
+        <div class="hero-content">
+            <h1>Guía de Implementación de Pagos</h1>
+            <p>Sistema completo para vender tus mapas de Minecraft</p>
+        </div>
+    </section>
+
+    <div class="content-section">
+        <h2>Comparación de Plataformas de Pago</h2>
+        
+        <table class="platform-comparison">
+            <thead>
+                <tr>
+                    <th>Plataforma</th>
+                    <th>Comisiones</th>
+                    <th>Ventajas</th>
+                    <th>Desventajas</th>
+                    <th>Ideal para</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>PayPal</td>
+                    <td>2.9% + $0.30 por transacción</td>
+                    <td>
+                        <ul>
+                            <li>Fácil integración</li>
+                            <li>Reconocimiento global</li>
+                            <li>Implementación rápida</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Menos personalizable</li>
+                            <li>Tasas más altas para ventas internacionales</li>
+                        </ul>
+                    </td>
+                    <td>Negocios pequeños que están comenzando</td>
+                </tr>
+                <tr>
+                    <td>Stripe</td>
+                    <td>2.9% + $0.30 por transacción</td>
+                    <td>
+                        <ul>
+                            <li>API muy flexible</li>
+                            <li>Excelente documentación</li>
+                            <li>Proceso de pago más profesional</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Implementación más compleja</li>
+                            <li>Requiere conocimientos técnicos</li>
+                        </ul>
+                    </td>
+                    <td>Negocios que buscan una solución personalizada y profesional</td>
+                </tr>
+                <tr>
+                    <td>Ko-fi / Buy Me a Coffee</td>
+                    <td>0-5% según plan</td>
+                    <td>
+                        <ul>
+                            <li>Configuración muy sencilla</li>
+                            <li>Comisiones bajas</li>
+                            <li>No requiere desarrollo</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Menos integrado con tu web</li>
+                            <li>Menos profesional</li>
+                            <li>Funcionalidades limitadas</li>
+                        </ul>
+                    </td>
+                    <td>Creadores de contenido individuales o hobby</td>
+                </tr>
+                <tr>
+                    <td>Gumroad</td>
+                    <td>3.5% + $0.30 por transacción</td>
+                    <td>
+                        <ul>
+                            <li>Diseñado para venta de contenido digital</li>
+                            <li>Maneja automáticamente las descargas</li>
+                            <li>Fácil de implementar</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Menos personalizable</li>
+                            <li>Comisiones algo más altas</li>
+                        </ul>
+                    </td>
+                    <td>Creadores que venden contenido digital y no quieren gestionar infraestructura</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="content-section">
+        <h2>Implementación Completa con PayPal (Frontend + Backend)</h2>
+        
+        <div class="step">
+            <h3>1. Configuración de PayPal Developer</h3>
+            <ol>
+                <li>Crea una cuenta en <a href="https://developer.paypal.com" target="_blank">PayPal Developer</a></li>
+                <li>Crea una aplicación para obtener Client-ID y Secret</li>
+                <li>Configura las URLs de redirección (success y cancel)</li>
+            </ol>
+        </div>
+        
+        <div class="step">
+            <h3>2. Backend (Node.js + Express)</h3>
+            <p>Para una implementación segura, necesitas un backend que procese los pagos y entregue los archivos. Aquí hay un ejemplo con Node.js:</p>
+            
+            <pre><code>// Instalar dependencias: 
+// npm install express body-parser @paypal/checkout-server-sdk
+
+const express = require('express');
+const bodyParser = require('body-parser');
+const paypal = require('@paypal/checkout-server-sdk');
+const fs = require('fs');
+const path = require('path');
+
+const app = express();
+app.use(bodyParser.json());
+
+// Configuración de PayPal
+const clientId = 'TU_CLIENT_ID';
+const clientSecret = 'TU_CLIENT_SECRET';
+const environment = new paypal.core.SandboxEnvironment(clientId, clientSecret);
+const client = new paypal.core.PayPalHttpClient(environment);
+
+// Productos disponibles (en producción, esto debería estar en una base de datos)
+const products = {
+  'mountain-landscape': {
+    name: 'Mountain Landscape',
+    price: '12.99',
+    file: 'mountain-landscape.rar'
+  },
+  'volcanic-island': {
+    name: 'Volcanic Island',
+    price: '9.99',
+    file: 'volcanic-island.rar'
+  },
+  'fantasy-world': {
+    name: 'Fantasy World',
+    price: '14.99',
+    file: 'fantasy-world.rar'
+  }
+};
+
+// Ruta para crear una orden
+app.post('/api/create-order', async (req, res) => {
+  const { productId } = req.body;
+  
+  if (!products[productId]) {
+    return res.status(400).send({ error: 'Producto no válido' });
+  }
+  
+  const product = products[productId];
+  
+  const request = new paypal.orders.OrdersCreateRequest();
+  request.prefer('return=representation');
+  request.requestBody({
+    intent: 'CAPTURE',
+    purchase_units: [{
+      description: `Minecraft Map: ${product.name}`,
+      amount: {
+        currency_code: 'USD',
+        value: product.price
+      }
+    }]
+  });
+  
+  try {
+    const order = await client.execute(request);
+    res.json({ orderId: order.result.id });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send({ error: 'Error al crear la orden' });
+  }
+});
+
+// Ruta para capturar/finalizar un pago
+app.post('/api/capture-order', async (req, res) => {
+  const { orderId, productId } = req.body;
+  
+  if (!products[productId]) {
+    return res.status(400).send({ error: 'Producto no válido' });
+  }
+  
+  const request = new paypal.orders.OrdersCaptureRequest(orderId);
+  request.requestBody({});
+  
+  try {
+    const capture = await client.execute(request);
+    const captureId = capture.result.purchase_units[0].payments.captures[0].id;
+    
+    // En producción, generarías un token único para la descarga
+    // y lo almacenarías en una base de datos junto con la información del comprador
+    const downloadToken = generateUniqueToken();
+    
+    // También enviarías un email con el enlace de descarga
+    
+    res.json({ 
+      captureId, 
+      downloadToken,
+      downloadUrl: `/download/${downloadToken}/${productId}`
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send({ error: 'Error al procesar el pago' });
+  }
+});
+
+// Ruta para descargar el archivo
+app.get('/download/:token/:productId', (req, res) => {
+  const { token, productId } = req.params;
+  
+  // En producción, verificarías que el token sea válido y no haya expirado
+  // consultando tu base de datos
+  
+  if (!products[productId]) {
+    return res.status(400).send('Producto no válido');
+  }
+  
+  const filePath = path.join(__dirname, 'maps', products[productId].file);
+  
+  // Verificar que el archivo exista
+  if (!fs.existsSync(filePath)) {
+    return res.status(404).send('Archivo no encontrado');
+  }
+  
+  res.download(filePath, products[productId].file);
+});
+
+function generateUniqueToken() {
+  // En producción, generarías un token único y seguro
+  return Math.random().toString(36).substring(2, 15) + 
+         Math.random().toString(36).substring(2, 15);
+}
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Servidor iniciado en puerto ${PORT}`);
+});</code></pre>
+        </div>
+        
+        <div class="step">
+            <h3>3. Frontend (JavaScript)</h3>
+            <p>El frontend debe comunicarse con tu backend para procesar los pagos de forma segura:</p>
+            
+            <pre><code>// Actualización del código de pago en el frontend
+function initPayPalButton(product, price) {
+  if (!window.paypal) {
+    console.error('PayPal SDK not loaded');
+    return;
+  }
+  
+  const paypalContainer = document.getElementById('paypal-button-container');
+  if (!paypalContainer) return;
+  
+  // Limpiar el contenedor
+  paypalContainer.innerHTML = '';
+  
+  // Mostrar loader
+  paypalContainer.innerHTML = '<div class="loader">Cargando opciones de pago...</div>';
+  
+  window.paypal.Buttons({
+    style: {
+      shape: 'rect',
+      color: 'gold',
+      layout: 'vertical',
+      label: 'pay'
+    },
+    
+    createOrder: function() {
+      // Llamar a tu backend para crear la orden
+      return fetch('/api/create-order', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          productId: product
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        return data.orderId;
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    },
+    
+    onApprove: function(data) {
+      // Mostrar mensaje de procesamiento
+      paypalContainer.innerHTML = '<div class="processing">Procesando tu pago...</div>';
+      
+      // Llamar a tu backend para finalizar la transacción
+      return fetch('/api/capture-order', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          orderId: data.orderID,
+          productId: product
+        })
+      })
+      .then(response => response.json())
+      .then(details => {
+        // Mostrar mensaje de éxito con el enlace de descarga
+        paypalContainer.innerHTML = `
+          <div class="payment-success">
+            <h3>¡Pago exitoso!</h3>
+            <p>Tu ID de transacción: ${details.captureId}</p>
+            <p>Tu mapa estará disponible para descargar por 48 horas.</p>
+            <a href="${details.downloadUrl}" class="btn download-btn">Descargar Ahora</a>
+            <p>También te hemos enviado un correo con el enlace de descarga.</p>
+          </div>`;
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        paypalContainer.innerHTML = `
+          <div class="payment-error">
+            <h3>Error en el pago</h3>
+            <p>Ha ocurrido un problema procesando tu pago. Por favor, intenta de nuevo o contacta a soporte.</p>
+          </div>`;
+      });
+    },
+    
+    onError: function(err) {
+      console.error('PayPal error:', err);
+      paypalContainer.innerHTML = `
+        <div class="payment-error">
+          <h3>Error en el pago</h3>
+          <p>Ha ocurrido un problema con PayPal. Por favor, intenta de nuevo.</p>
+        </div>`;
+    }
+  }).render('#paypal-button-container');
+}</code></pre>
+        </div>
+        
+        <div class="step">
+            <h3>4. Envío de Emails de Confirmación</h3>
+            <p>Para enviar correos de confirmación con enlaces de descarga, puedes usar servicios como Nodemailer:</p>
+            
+            <pre><code>// Instalar: npm install nodemailer
+
+const nodemailer = require('nodemailer');
+
+// Configurar transporte de correo
+const transporter = nodemailer.createTransport({
+  host: 'tu-servidor-smtp.com',
+  port: 587,
+  secure: false,
+  auth: {
+    user: 'tu-email@dominio.com',
+    pass: 'tu-contraseña'
+  }
+});
+
+// Función para enviar email con enlace de descarga
+async function sendDownloadEmail(email, productName, downloadUrl) {
+  try {
+    await transporter.sendMail({
+      from: '"Minecraft by Jockerel" <ventas@tudominio.com>',
+      to: email,
+      subject: `Tu mapa de Minecraft: ${productName}`,
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #4CAF50;">¡Gracias por tu compra!</h2>
+          <p>Tu mapa de Minecraft <strong>${productName}</strong> está listo para descargar.</p>
+          <p>Puedes acceder a tu descarga con el siguiente enlace (válido por 48 horas):</p>
+          <p><a href="${downloadUrl}" style="background-color: #4CAF50; color: white; padding: 10px 15px; text-decoration: none; display: inline-block; border-radius: 3px;">Descargar Mapa</a></p>
+          <p>Si tienes alguna pregunta o problema con la descarga, no dudes en contactarnos.</p>
+          <p>¡Disfruta tu mapa!</p>
+          <p>El equipo de Minecraft by Jockerel</p>
+        </div>
+      `
+    });
+    console.log('Email enviado correctamente');
+  } catch (error) {
+    console.error('Error al enviar email:', error);
+  }
+}</code></pre>
+        </div>
+        
+        <div class="step">
+            <h3>5. Seguridad y Consideraciones</h3>
+            <ul>
+                <li><strong>Protección de archivos:</strong> Nunca debes exponer directamente tus archivos de mapas en una carpeta pública.</li>
+                <li><strong>Enlaces de descarga temporales:</strong> Genera tokens únicos que expiren después de un cierto tiempo o número de descargas.</li>
+                <li><strong>Base de datos:</strong> Almacena información de compras, clientes y enlaces de descarga en una base de datos segura.</li>
+                <li><strong>HTTPS:</strong> Siempre usa HTTPS para proteger la información de pago.</li>
+                <li><strong>Registro de actividad:</strong> Implementa logs para registrar todas las transacciones y descargas.</li>
+                <li><strong>Limitación de descargas:</strong> Limita el número de intentos de descarga para un mismo token.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Implementación Simplificada con Gumroad</h2>
+        <p>Si no quieres implementar todo un sistema backend, Gumroad es una excelente alternativa:</p>
+        
+        <ol>
+            <li>Crea una cuenta en <a href="https://gumroad.com" target="_blank">Gumroad</a></li>
+            <li>Sube tus mapas como productos digitales</li>
+            <li>Obtén enlaces directos a tus productos</li>
+            <li>Integra los botones de compra en tu sitio web</li>
+        </ol>
+        
+        <pre><code>&lt;!-- Ejemplo de integración con Gumroad -->
+&lt;script src="https://gumroad.com/js/gumroad.js">&lt;/script>
+
+&lt;a class="gumroad-button" href="https://gum.co/TU_PRODUCTO">Comprar mapa&lt;/a></code></pre>
+        
+        <p>Ventajas:</p>
+        <ul>
+            <li>Sin desarrollo backend necesario</li>
+            <li>Gestión automática de pagos y descargas</li>
+            <li>Sistema de entrega por email integrado</li>
+            <li>Estadísticas de ventas</li>
+        </ul>
+    </div>
+
+    <!-- Nueva sección sobre monetización con anuncios -->
+    <div class="content-section">
+        <h2>Monetización con Google AdSense</h2>
+        <p>Además de vender tus mapas, puedes generar ingresos adicionales mediante la publicidad en tu sitio web. Google AdSense es una de las plataformas más populares y fáciles de implementar.</p>
+        
+        <div class="step">
+            <h3>1. Configuración de Google AdSense</h3>
+            <ol>
+                <li>Crea una cuenta en <a href="https://www.google.com/adsense" target="_blank">Google AdSense</a></li>
+                <li>Verifica la propiedad de tu sitio web añadiendo el código proporcionado</li>
+                <li>Espera la aprobación de Google (suele tardar entre 1 día y 2 semanas)</li>
+                <li>Una vez aprobado, crea unidades de anuncios para diferentes secciones de tu sitio</li>
+            </ol>
+        </div>
+        
+        <div class="step">
+            <h3>2. Implementación Estratégica de Anuncios</h3>
+            <p>Coloca anuncios en ubicaciones estratégicas que maximicen la visibilidad sin afectar la experiencia del usuario:</p>
+            
+            <pre><code>&lt;!-- Ejemplo de implementación de Google AdSense -->
+&lt;!-- En el head de tu HTML -->
+&lt;script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous">&lt;/script>
+
+&lt;!-- Contenedor para anuncio en el sitio -->
+&lt;div class="ad-container">
+    &lt;span class="ad-label">Advertisement&lt;/span>
+    &lt;ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="XXXXXXXXXX"
+         data-ad-format="auto"
+         data-full-width-responsive="true">&lt;/ins>
+    &lt;script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    &lt;/script>
+&lt;/div></code></pre>
+            
+            <p>Ubicaciones recomendadas:</p>
+            <ul>
+                <li><strong>Banner horizontal:</strong> Después del hero o encabezado principal</li>
+                <li><strong>Anuncio en barra lateral:</strong> Junto al contenido principal o formularios</li>
+                <li><strong>Banner entre secciones:</strong> Entre diferentes bloques de contenido</li>
+                <li><strong>Anuncio vertical:</strong> Flotando junto al contenido principal</li>
+                <li><strong>Banner antes del footer:</strong> Al final del contenido principal</li>
+            </ul>
+        </div>
+        
+        <div class="step">
+            <h3>3. Mejores Prácticas para Optimizar Ingresos por Publicidad</h3>
+            <ul>
+                <li><strong>Carga diferida (lazy loading):</strong> Carga los anuncios solo cuando sean visibles para mejorar el rendimiento</li>
+                <li><strong>Responsive:</strong> Asegúrate de que los anuncios se adapten a diferentes tamaños de pantalla</li>
+                <li><strong>Balance:</strong> No sobrecargues tu sitio con demasiados anuncios (máximo 3-4 por página)</li>
+                <li><strong>Pruebas A/B:</strong> Experimenta con diferentes ubicaciones y formatos</li>
+                <li><strong>Analíticas:</strong> Monitorea regularmente el rendimiento de tus anuncios</li>
+                <li><strong>Detección de bloqueadores de anuncios:</strong> Implementa mensajes amigables para usuarios con AdBlock</li>
+            </ul>
+            
+            <pre><code>// Código para implementar carga diferida de anuncios
+function initLazyAds() {
+    if ('IntersectionObserver' in window) {
+        const adObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const adContainer = entry.target;
+                    if (!adContainer.dataset.loaded) {
+                        adContainer.dataset.loaded = true;
+                        const adSlot = adContainer.querySelector('ins.adsbygoogle');
+                        if (adSlot && window.adsbygoogle) {
+                            (window.adsbygoogle = window.adsbygoogle || []).push({});
+                        }
+                        adObserver.unobserve(adContainer);
+                    }
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.ad-container').forEach(adContainer => {
+            if (!adContainer.dataset.loaded) {
+                adObserver.observe(adContainer);
+            }
+        });
+    }
+}</code></pre>
+        </div>
+        
+        <div class="step">
+            <h3>4. Alternativas a Google AdSense</h3>
+            <p>Si buscas opciones diferentes, considera estas alternativas:</p>
+            
+            <table class="platform-comparison">
+                <thead>
+                    <tr>
+                        <th>Plataforma</th>
+                        <th>Características</th>
+                        <th>Ventajas</th>
+                        <th>Requisitos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Media.net</td>
+                        <td>Red contextual de Yahoo! y Bing</td>
+                        <td>Buena alternativa a AdSense, anuncios contextuales</td>
+                        <td>Sitio con contenido de calidad, tráfico principalmente de países tier-1</td>
+                    </tr>
+                    <tr>
+                        <td>Ezoic</td>
+                        <td>Plataforma de optimización de ingresos</td>
+                        <td>Pruebas A/B automatizadas, mayor RPM</td>
+                        <td>Mínimo 10,000 visitas mensuales</td>
+                    </tr>
+                    <tr>
+                        <td>PropellerAds</td>
+                        <td>Anuncios push, nativos y pop-under</td>
+                        <td>Bajos requisitos de entrada, buenos pagos</td>
+                        <td>Sin requisitos mínimos de tráfico</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="step">
+            <h3>5. Combinando Ventas y Publicidad</h3>
+            <p>Para maximizar tus ingresos, considera estas estrategias combinadas:</p>
+            <ul>
+                <li><strong>Contenido gratuito con anuncios:</strong> Ofrece contenido gratuito (como guías, tutoriales) monetizado con anuncios</li>
+                <li><strong>Contenido premium sin anuncios:</strong> Vende mapas y contenido premium sin publicidad</li>
+                <li><strong>Estrategia escalonada:</strong> Ofrece versiones básicas gratuitas de mapas con anuncios, y versiones premium de pago</li>
+                <li><strong>Contenido exclusivo para suscriptores:</strong> Considera un modelo de suscripción mensual para contenido exclusivo sin anuncios</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2023 Minecraft by Jockerel. All rights reserved.</p>
+            <div class="minecraft-disclaimer">
+                <p>This site is not affiliated with Mojang Studios or Microsoft.</p>
+                <p>Minecraft is a registered trademark of Mojang Studios.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Sitio Web</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- PayPal SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=USD"></script>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+    <!-- EmailJS para envío de emails -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // Reemplazar 'your_service_id' con tu ID de servicio real de EmailJS
+            emailjs.init("your_service_id");
+        })();
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Jockerel Creations</div>
+            <button class="mobile-menu-btn">☰</button>
+            <ul class="menu">
+                <li><a href="#inicio">Home</a></li>
+                <li><a href="#servicios">Services</a></li>
+                <li><a href="#maps">Maps</a></li>
+                <li><a href="#acerca">About us</a></li>
+                <li><a href="#contacto">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>Jockerel Creations</h1>
+            <p>Find your perfect Minecraft map or create it!</p>
+            <button class="btn">Know more</button>
+        </div>
+    </section>
+
+    <!-- Banner de publicidad horizontal después del hero -->
+    <div class="ad-container horizontal">
+        <span class="ad-label">Advertisement</span>
+        <!-- Google AdSense - Banner horizontal -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="XXXXXXXXXX"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <section id="servicios" class="services">
+        <h2>Our Services</h2>
+        <div class="services-container">
+            <div class="service-card">
+                <div class="service-icon">🟫</div>
+                <h3>Pre-designed Maps</h3>
+                <p>Choose one of our creations, now available to play!</p>
+                <button class="btn maps-btn" onclick="document.getElementById('maps').scrollIntoView({behavior: 'smooth'})">See available maps</button>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💎</div>
+                <h3>Create your custom map</h3>
+                <p>We create your map with the characteristics you tell us.</p>
+                <button class="btn custom-map-btn">Create my custom map</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="custom-map" class="custom-map-section">
+        <h2>Create Your Custom Map</h2>
+        <div class="custom-map-container">
+            <form id="custom-map-form">
+                <div class="form-group">
+                    <label for="minecraft-version">Minecraft version (Java only, example 1.12):</label>
+                    <input type="text" id="minecraft-version" name="minecraft-version" required placeholder="e.g., 1.19.2">
+                </div>
+                
+                <div class="form-group">
+                    <label for="customer-email">Email:</label>
+                    <input type="email" id="customer-email" name="customer-email" required placeholder="your.email@example.com">
+                    <p class="form-help">We'll use this email to send you updates about your custom map</p>
+                </div>
+                
+                <div class="form-group">
+                    <label for="map-details">Map Details (biomes, style, features):</label>
+                    <textarea id="map-details" name="map-details" rows="5" required placeholder="Describe the biomes, style, and features you want in your custom map..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="reference-images">Attach reference images:</label>
+                    <input type="file" id="reference-images" name="reference-images" multiple accept="image/*">
+                    <p class="form-help">You can select multiple images</p>
+                </div>
+                
+                <div class="form-group map-size-selector">
+                    <label>Map Size:</label>
+                    <div class="size-controls">
+                        <button type="button" class="size-btn minus-btn" id="decreaseSize">-</button>
+                        <div class="size-display" id="mapSize">1k x 1k</div>
+                        <button type="button" class="size-btn plus-btn" id="increaseSize">+</button>
+                    </div>
+                    <input type="hidden" id="map-size-value" name="map-size-value" value="1">
+                    <p class="size-info">Minimum: 1k x 1k, Maximum: 15k x 15k</p>
+                </div>
+                
+                <div class="price-calculator">
+                    <h3>Estimated Price: <span id="mapPrice">$15</span></h3>
+                    <p class="price-info">Price calculated at $15 per 1k x 1k area</p>
+                </div>
+                
+                <button type="submit" class="btn submit-btn">Request Custom Map</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Banner de publicidad horizontal entre secciones -->
+    <div class="ad-container horizontal">
+        <span class="ad-label">Advertisement</span>
+        <!-- Google AdSense - Banner horizontal -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="XXXXXXXXXX"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <section id="acerca" class="about">
+        <h2>About us</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>I'm a Minecraft map maker dedicated to creating exceptional experiences. My goal is to help my clients create unique worlds that take their projects to the next level.</p>
+                <p>With over five years of experience creating maps, I guarantee high-quality solutions tailored to your needs.</p>
+            </div>
+            <div class="about-image">
+                <img src="img/minecraft-collage.jpg" alt="Minecraft landscapes by Jockerel" class="about-img">
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="contact">
+        <h2>Contact</h2>
+        <div class="with-sidebar">
+            <div class="main-content">
+                <div class="contact-container">
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+            <div class="sidebar">
+                <!-- Bloque de publicidad en la barra lateral -->
+                <div class="ad-container sidebar">
+                    <span class="ad-label">Advertisement</span>
+                    <!-- Google AdSense - Anuncio de barra lateral -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                         data-ad-slot="XXXXXXXXXX"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="maps" class="maps-section">
+        <h2>Pre-designed Maps</h2>
+        
+        <!-- Anuncio vertical en la sección de mapas -->
+        <div class="ad-container vertical">
+            <span class="ad-label">Advertisement</span>
+            <!-- Google AdSense - Anuncio vertical -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                 data-ad-slot="XXXXXXXXXX"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        
+        <div class="maps-container">
+            <div class="map-card">
+                <div class="map-images">
+                    <img src="img/map-placeholder-1.jpg" alt="Candyland Map" class="map-preview">
+                </div>
+                <h3>Candyland</h3>
+                <p>A stunning 5kx5k map of the "Land of Candy" with different biomes to explore within the theme.</p>
+                <div class="map-details">
+                    <div class="map-info">
+                        <span>Version: 1.18+</span>
+                        <span>Size: 289MB</span>
+                    </div>
+                    <div class="price-tag">
+                        <span class="map-price">$49.99</span>
+                    </div>
+                    <div class="map-actions">
+                        <button class="btn payment-btn" data-product="mountain-landscape" data-price="12.99">Purchase</button>
+                        <button class="btn preview-btn" data-video="https://www.youtube.com/embed/r6b2CQ_peQQ">Watch Video</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="map-card">
+                <div class="map-images">
+                    <img src="img/map-placeholder-2.jpg" alt="Ethia" class="map-preview">
+                </div>
+                <h3>Ethia</h3>
+                <p>An incredible 5kx5k map, ideal for adventures and factions modes, with many biomes from frozen plains to deserts, savannas, and lush forests, with a wide variety of reliefs and points of interest.</p>
+                <div class="map-details">
+                    <div class="map-info">
+                        <span>Version: 1.15+</span>
+                        <span>Size: 339MB</span>
+                    </div>
+                    <div class="price-tag">
+                        <span class="map-price">$49.99</span>
+                    </div>
+                    <div class="map-actions">
+                        <button class="btn payment-btn" data-product="Ethia" data-price="49.99">Purchase</button>
+                        <button class="btn preview-btn" data-video="https://www.youtube.com/embed/example2">Watch Video</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="map-card">
+                <div class="map-images">
+                    <img src="img/map-placeholder-3.jpg" alt="Gefrary" class="map-preview">
+                </div>
+                <h3>Gefrary</h3>
+                <p>A beautiful and aesthetically pleasing 1kx1k round map with a relaxing aura. Ideal for use as an arena.</p>
+                <div class="map-details">
+                    <div class="map-info">
+                        <span>Version: 1.12+</span>
+                        <span>Size: 6MB</span>
+                    </div>
+                    <div class="price-tag">
+                        <span class="map-price">$9.99</span>
+                    </div>
+                    <div class="map-actions">
+                        <button class="btn payment-btn" data-product="Gefrary" data-price="9.99">Purchase</button>
+                        <button class="btn preview-btn" data-video="https://www.youtube.com/embed/example3">Watch Video</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="map-card">
+                <div class="map-images">
+                    <img src="img/map-placeholder-4.jpg" alt="Ashana" class="map-preview">
+                </div>
+                <h3>Ashana</h3>
+                <p>A challenging 1kx1k round desert map, divided into two biomes. Ideal for use as an arena or for faction battles.</p>
+                <div class="map-details">
+                    <div class="map-info">
+                        <span>Version: 1.12+</span>
+                        <span>Size: 6MB</span>
+                    </div>
+                    <div class="price-tag">
+                        <span class="map-price">$9.99</span>
+                    </div>
+                    <div class="map-actions">
+                        <button class="btn payment-btn" data-product="Ashana" data-price="9.99">Purchase</button>
+                        <button class="btn preview-btn" data-video="https://www.youtube.com/embed/example4">Watch Video</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="video-modal" id="videoModal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <iframe id="youtubeFrame" width="100%" height="315" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner de publicidad horizontal antes del footer -->
+    <div class="ad-container horizontal">
+        <span class="ad-label">Advertisement</span>
+        <!-- Google AdSense - Banner horizontal -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="XXXXXXXXXX"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2023 Minecraft by Jockerel. All rights reserved.</p>
+            <div class="minecraft-disclaimer">
+                <p>This site is not affiliated with Mojang Studios or Microsoft.</p>
+                <p>Minecraft is a registered trademark of Mojang Studios.</p>
+            </div>
+            <div class="social-links">
+                <a href="#">Discord</a>
+                <a href="#">YouTube</a>
+                <a href="#">Planet Minecraft</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="payment-modal">
+        <div class="modal-content payment-modal-content">
+            <span class="close-modal" id="closePaymentModal">&times;</span>
+            <h3>Complete Your Purchase</h3>
+            <div class="product-details">
+                <p>Product: <span id="productName"></span></p>
+                <p>Price: <span id="productPrice"></span></p>
+            </div>
+            <div id="paypal-button-container"></div>
+            <div class="payment-notes">
+                <p>Once payment is completed, you'll receive an email with your download link.</p>
+                <p>For any issues, please contact us at support@jockerel.com</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
