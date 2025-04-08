@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Sitio Web</title>
     <link rel="stylesheet" href="css/styles.css">
-    <!-- PayPal SDK -->
-    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=USD"></script>
+    <!-- PayPal SDK se carga dinámicamente desde @paypal/paypal-js -->
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
     <!-- EmailJS para envío de emails -->
@@ -224,7 +223,7 @@
                         <span class="map-price">$49.99</span>
                     </div>
                     <div class="map-actions">
-                        <button class="btn payment-btn" data-product="mountain-landscape" data-price="12.99">Purchase</button>
+                        <button class="btn payment-btn" data-product="Candyland" data-price="49.99">Purchase</button>
                         <button class="btn preview-btn" data-video="https://www.youtube.com/embed/r6b2CQ_peQQ">Watch Video</button>
                     </div>
                 </div>
@@ -332,22 +331,8 @@
         </div>
     </footer>
 
+    <!-- Configuración de Gumroad -->
+    <script src="js/gumroad-config.js"></script>
     <script src="js/script.js"></script>
-    <!-- Payment Modal -->
-    <div id="paymentModal" class="payment-modal">
-        <div class="modal-content payment-modal-content">
-            <span class="close-modal" id="closePaymentModal">&times;</span>
-            <h3>Complete Your Purchase</h3>
-            <div class="product-details">
-                <p>Product: <span id="productName"></span></p>
-                <p>Price: <span id="productPrice"></span></p>
-            </div>
-            <div id="paypal-button-container"></div>
-            <div class="payment-notes">
-                <p>Once payment is completed, you'll receive an email with your download link.</p>
-                <p>For any issues, please contact us at support@jockerel.com</p>
-            </div>
-        </div>
-    </div>
 </body>
 </html> 
