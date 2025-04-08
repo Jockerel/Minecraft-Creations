@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Sitio Web</title>
+    <title>Jockerel Creations</title>
     <link rel="stylesheet" href="css/styles.css">
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7151029323823890" crossorigin="anonymous"></script>
+    <!-- Configuración de AdSense -->
+    <script src="js/adsense-config.js"></script>
     <!-- EmailJS para envío de emails -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
@@ -48,9 +50,18 @@
              data-ad-client="ca-pub-7151029323823890"
              data-ad-slot="XXXXXXXXXX"
              data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
+             data-full-width-responsive="true"
+             data-ad-location="hero-banner"></ins>
         <script>
-             (adsbygoogle = window.adsbygoogle || []).push({});
+             // Usar el slot desde la configuración
+             (function() {
+                 const adElement = document.currentScript.previousElementSibling;
+                 const location = adElement.getAttribute('data-ad-location');
+                 if (window.ADSENSE_CONFIG && window.ADSENSE_CONFIG.SLOTS[location]) {
+                     adElement.setAttribute('data-ad-slot', window.ADSENSE_CONFIG.SLOTS[location]);
+                 }
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+             })();
         </script>
     </div>
 
@@ -128,9 +139,18 @@
              data-ad-client="ca-pub-7151029323823890"
              data-ad-slot="XXXXXXXXXX"
              data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
+             data-full-width-responsive="true"
+             data-ad-location="sections-banner"></ins>
         <script>
-             (adsbygoogle = window.adsbygoogle || []).push({});
+             // Usar el slot desde la configuración
+             (function() {
+                 const adElement = document.currentScript.previousElementSibling;
+                 const location = adElement.getAttribute('data-ad-location');
+                 if (window.ADSENSE_CONFIG && window.ADSENSE_CONFIG.SLOTS[location]) {
+                     adElement.setAttribute('data-ad-slot', window.ADSENSE_CONFIG.SLOTS[location]);
+                 }
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+             })();
         </script>
     </div>
 
@@ -179,9 +199,18 @@
                          data-ad-client="ca-pub-7151029323823890"
                          data-ad-slot="XXXXXXXXXX"
                          data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
+                         data-full-width-responsive="true"
+                         data-ad-location="sidebar-ad"></ins>
                     <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
+                         // Usar el slot desde la configuración
+                         (function() {
+                             const adElement = document.currentScript.previousElementSibling;
+                             const location = adElement.getAttribute('data-ad-location');
+                             if (window.ADSENSE_CONFIG && window.ADSENSE_CONFIG.SLOTS[location]) {
+                                 adElement.setAttribute('data-ad-slot', window.ADSENSE_CONFIG.SLOTS[location]);
+                             }
+                             (adsbygoogle = window.adsbygoogle || []).push({});
+                         })();
                     </script>
                 </div>
             </div>
@@ -200,9 +229,18 @@
                  data-ad-client="ca-pub-7151029323823890"
                  data-ad-slot="XXXXXXXXXX"
                  data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
+                 data-full-width-responsive="true"
+                 data-ad-location="maps-vertical"></ins>
             <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
+                 // Usar el slot desde la configuración
+                 (function() {
+                     const adElement = document.currentScript.previousElementSibling;
+                     const location = adElement.getAttribute('data-ad-location');
+                     if (window.ADSENSE_CONFIG && window.ADSENSE_CONFIG.SLOTS[location]) {
+                         adElement.setAttribute('data-ad-slot', window.ADSENSE_CONFIG.SLOTS[location]);
+                     }
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                 })();
             </script>
         </div>
         
@@ -309,9 +347,18 @@
              data-ad-client="ca-pub-7151029323823890"
              data-ad-slot="XXXXXXXXXX"
              data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
+             data-full-width-responsive="true"
+             data-ad-location="pre-footer"></ins>
         <script>
-             (adsbygoogle = window.adsbygoogle || []).push({});
+             // Usar el slot desde la configuración
+             (function() {
+                 const adElement = document.currentScript.previousElementSibling;
+                 const location = adElement.getAttribute('data-ad-location');
+                 if (window.ADSENSE_CONFIG && window.ADSENSE_CONFIG.SLOTS[location]) {
+                     adElement.setAttribute('data-ad-slot', window.ADSENSE_CONFIG.SLOTS[location]);
+                 }
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+             })();
         </script>
     </div>
 
