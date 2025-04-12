@@ -6,12 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
         contactForm.addEventListener('submit', handleFormSubmit);
     }
 
-    // Manejador para el formulario de mapa personalizado
-    const customMapForm = document.getElementById('custom-map-form');
-    if (customMapForm) {
-        customMapForm.addEventListener('submit', handleCustomMapSubmit);
-    }
-
     // Efecto de desplazamiento suave para los enlaces de navegación
     const navLinks = document.querySelectorAll('nav a');
     navLinks.forEach(link => {
@@ -148,57 +142,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Funcionalidad para mostrar/ocultar el formulario de mapa personalizado
-    const customMapBtn = document.querySelector('.custom-map-btn');
-    const customMapSection = document.getElementById('custom-map');
-    
-    if (customMapBtn && customMapSection) {
-        customMapBtn.addEventListener('click', () => {
-            customMapSection.classList.add('active');
-            customMapSection.scrollIntoView({ behavior: 'smooth' });
-        });
-    }
-
-    // Funcionalidad para el selector de tamaño del mapa
-    const decreaseBtn = document.getElementById('decreaseSize');
-    const increaseBtn = document.getElementById('increaseSize');
-    const mapSizeDisplay = document.getElementById('mapSize');
-    const mapSizeInput = document.getElementById('map-size-value');
-    const mapPriceDisplay = document.getElementById('mapPrice');
-    
-    if (decreaseBtn && increaseBtn && mapSizeDisplay && mapSizeInput && mapPriceDisplay) {
-        let currentSize = 1; // Valor inicial 1k x 1k
-        
-        // Función para actualizar la visualización del tamaño y precio
-        const updateSizeAndPrice = () => {
-            mapSizeDisplay.textContent = `${currentSize}k x ${currentSize}k`;
-            mapSizeInput.value = currentSize;
-            const price = currentSize * 15; // $15 por cada 1k x 1k
-            mapPriceDisplay.textContent = `$${price}`;
-        };
-        
-        // Disminuir tamaño
-        decreaseBtn.addEventListener('click', () => {
-            if (currentSize > 1) {
-                currentSize--;
-                updateSizeAndPrice();
-            }
-        });
-        
-        // Aumentar tamaño
-        increaseBtn.addEventListener('click', () => {
-            if (currentSize < 15) {
-                currentSize++;
-                updateSizeAndPrice();
-            }
-        });
-    }
-
     // Detectar bloqueador de anuncios
-    detectAdBlocker();
+    // detectAdBlocker(); // Desactivado
 
     // Inicializar anuncios en carga diferida
-    initLazyAds();
+    // initLazyAds(); // Desactivado
 });
 
 // Función para manejar el envío del formulario
@@ -236,53 +184,13 @@ function smoothScroll(e) {
     }
 }
 
-// Función para manejar el envío del formulario de mapa personalizado
-function handleCustomMapSubmit(e) {
-    e.preventDefault();
-    
-    // Obtener los valores del formulario
-    const minecraftVersion = document.getElementById('minecraft-version').value;
-    const customerEmail = document.getElementById('customer-email').value;
-    const mapDetails = document.getElementById('map-details').value;
-    const mapSize = document.getElementById('map-size-value').value;
-    const price = mapSize * 15;
-    
-    // Validación básica
-    if (!minecraftVersion || !mapDetails || !customerEmail) {
-        alert('Por favor, completa todos los campos requeridos.');
-        return;
-    }
-    
-    // Verificar si GUMROAD_LINKS está definido (desde gumroad-config.js)
-    if (typeof GUMROAD_LINKS === 'undefined') {
-        console.error('Error: La configuración de Gumroad no está disponible.');
-        alert('Lo sentimos, ha ocurrido un error al intentar acceder a la tienda.');
-        return;
-    }
-    
-    // Obtener la URL de Gumroad para mapas personalizados
-    const gumroadCustomMapUrl = GUMROAD_LINKS['custom-map'];
-    
-    if (!gumroadCustomMapUrl) {
-        console.error('No se encontró una URL de Gumroad para mapas personalizados');
-        alert('Lo sentimos, el servicio de mapas personalizados no está disponible actualmente.');
-        return;
-    }
-    
-    // Informar al usuario y redirigir
-    alert(`Vamos a redirigirte a Gumroad para completar tu compra de mapa personalizado de ${mapSize}k x ${mapSize}k por $${price}. Por favor, incluye los detalles del mapa en tu pedido.`);
-    
-    window.open(gumroadCustomMapUrl, '_blank');
-    
-    // Limpiar el formulario
-    e.target.reset();
-    document.getElementById('mapSize').textContent = '1k x 1k';
-    document.getElementById('map-size-value').value = '1';
-    document.getElementById('mapPrice').textContent = '$15';
-}
-
 // Detectar bloqueador de anuncios
 function detectAdBlocker() {
+    // Función desactivada
+    return;
+    
+    // Código original comentado
+    /*
     // Crear un elemento div temporal para detección
     const adDetectionDiv = document.createElement('div');
     adDetectionDiv.className = 'ad-detection';
@@ -343,10 +251,16 @@ function detectAdBlocker() {
         // Eliminar el div de detección
         document.body.removeChild(adDetectionDiv);
     }, 100);
+    */
 }
 
 // Inicializar anuncios en carga diferida
 function initLazyAds() {
+    // Función desactivada
+    return;
+    
+    // Código original comentado
+    /*
     // Observador para cargar anuncios cuando sean visibles
     if ('IntersectionObserver' in window) {
         const adObserver = new IntersectionObserver((entries) => {
@@ -390,6 +304,7 @@ function initLazyAds() {
             }
         });
     }
+    */
 }
 
 // Agregamos algunos estilos dinámicos
