@@ -111,69 +111,6 @@
         </script>
     </div>
 
-    <section id="acerca" class="about">
-        <h2>About us</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <p>I'm a Minecraft map maker dedicated to creating exceptional experiences. My goal is to help my clients create unique worlds that take their projects to the next level.</p>
-                <p>With over five years of experience creating maps, I guarantee high-quality solutions tailored to your needs.</p>
-            </div>
-            <div class="about-image">
-                <img src="img/minecraft-collage.jpg" alt="Minecraft landscapes by Jockerel" class="about-img">
-            </div>
-        </div>
-    </section>
-
-    <section id="contacto" class="contact">
-        <h2>Contact</h2>
-        <div class="with-sidebar">
-            <div class="main-content">
-                <div class="contact-container">
-                    <form id="contact-form">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Send Message</button>
-                    </form>
-                </div>
-            </div>
-            <div class="sidebar">
-                <!-- Bloque de publicidad en la barra lateral -->
-                <div class="ad-container sidebar" style="display: none;">
-                    <span class="ad-label">Advertisement</span>
-                    <!-- Google AdSense - Anuncio de barra lateral -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-7151029323823890"
-                         data-ad-slot="XXXXXXXXXX"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"
-                         data-ad-location="sidebar-ad"></ins>
-                    <script>
-                         // Usar el slot desde la configuración
-                         (function() {
-                             const adElement = document.currentScript.previousElementSibling;
-                             const location = adElement.getAttribute('data-ad-location');
-                             if (window.ADSENSE_CONFIG && window.ADSENSE_CONFIG.SLOTS[location]) {
-                                 adElement.setAttribute('data-ad-slot', window.ADSENSE_CONFIG.SLOTS[location]);
-                             }
-                             (adsbygoogle = window.adsbygoogle || []).push({});
-                         })();
-                    </script>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section id="maps" class="maps-section">
         <h2>Pre-designed Maps</h2>
         
@@ -291,6 +228,75 @@
             <div class="modal-content">
                 <span class="close-modal">&times;</span>
                 <iframe id="youtubeFrame" width="100%" height="315" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="contact">
+        <h2>Contact</h2>
+        <div class="with-sidebar">
+            <div class="main-content">
+                <div class="contact-container">
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+            <div class="sidebar">
+                <!-- Bloque de publicidad en la barra lateral -->
+                <div class="ad-container sidebar" style="display: none;">
+                    <span class="ad-label">Advertisement</span>
+                    <!-- Google AdSense - Anuncio de barra lateral -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-7151029323823890"
+                         data-ad-slot="XXXXXXXXXX"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"
+                         data-ad-location="sidebar-ad"></ins>
+                    <script>
+                         // Usar el slot desde la configuración
+                         (function() {
+                             const adElement = document.currentScript.previousElementSibling;
+                             const location = adElement.getAttribute('data-ad-location');
+                             if (window.ADSENSE_CONFIG && window.ADSENSE_CONFIG.SLOTS[location]) {
+                                 adElement.setAttribute('data-ad-slot', window.ADSENSE_CONFIG.SLOTS[location]);
+                             }
+                             (adsbygoogle = window.adsbygoogle || []).push({});
+                         })();
+                    </script>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="acerca" class="about">
+        <h2>About us</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>🏆 Expertise meets Creativity</h3>
+                <p>Welcome to the world of Jockerel Creations! I'm a passionate Minecraft architect and worldbuilder with over five years of experience crafting breathtaking landscapes and immersive environments.</p>
+                
+                <h3>✨ My Mission</h3>
+                <p>My goal is to transform your vision into stunning virtual worlds. Whether you're looking for a competitive arena, a sprawling adventure map, or a custom landscape for your server, I create experiences that will amaze your players and elevate your Minecraft project.</p>
+                
+                <h3>💯 The Jockerel Promise</h3>
+                <p>Every map is crafted with attention to detail, customized to your specific needs, and optimized for performance. I don't just build maps - I create memorable experiences that keep players coming back.</p>
+            </div>
+            <div class="about-image">
+                <img src="img/minecraft-collage.jpg" alt="Minecraft landscapes by Jockerel" class="about-img">
             </div>
         </div>
     </section>
