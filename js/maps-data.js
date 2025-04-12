@@ -30,7 +30,7 @@ const MAPS_DATA = [
         version: "1.12+",
         size: "6MB",
         price: 9.99,
-        videoUrl: "https://www.youtube.com/embed/example3",
+        videoUrl: "https://www.youtube.com/embed/Eckegogcx4M",
         visible: true // Este mapa se mostrará en la página
     },
     {
@@ -41,8 +41,8 @@ const MAPS_DATA = [
         version: "1.12+",
         size: "6MB",
         price: 9.99,
-        videoUrl: "https://www.youtube.com/embed/example4",
-        visible: false // Este mapa se mostrará en la página
+        videoUrl: "https://www.youtube.com/embed/yDjwNYKsc68",
+        visible: true // Este mapa se mostrará en la página
     },
     {
         id: "coming-soon",

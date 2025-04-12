@@ -16,6 +16,6 @@ const GUMROAD_LINKS = {
     'candyland': 'https://jockerel.gumroad.com/l/candyland',
     'ethia': 'https://jockerel.gumroad.com/l/ethia',
     'gefrary': 'https://jockerel.gumroad.com/l/glnyq',
-    'ashana': 'https://jockerel.gumroad.com/l/ashana',
+    'ashana': 'https://jockerel.gumroad.com/l/ahrlps',
     'coming-soon': 'https://jockerel.gumroad.com/l/coming-soon'
 }; 
