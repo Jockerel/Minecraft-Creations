@@ -1,5 +1,8 @@
 // Esperar a que el DOM esté completamente cargado
 document.addEventListener('DOMContentLoaded', () => {
+    // Cargar los mapas dinámicamente
+    loadMaps();
+
     // Manejador para el formulario de contacto
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
@@ -73,23 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const videoModal = document.getElementById('videoModal');
     const youtubeFrame = document.getElementById('youtubeFrame');
     const closeModal = document.querySelector('.close-modal');
-    const previewButtons = document.querySelectorAll('.preview-btn');
-
-    // Abrir modal al hacer clic en botón de vista previa
-    if (previewButtons.length > 0) {
-        previewButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const videoUrl = this.getAttribute('data-video');
-                if (videoUrl && youtubeFrame) {
-                    youtubeFrame.src = videoUrl;
-                    if (videoModal) {
-                        videoModal.style.display = 'flex';
-                        document.body.style.overflow = 'hidden'; // Evitar scroll del body
-                    }
-                }
-            });
-        });
-    }
 
     // Cerrar modal al hacer clic en botón de cierre
     if (closeModal && videoModal) {
@@ -305,6 +291,103 @@ function initLazyAds() {
         });
     }
     */
+}
+
+// Función para cargar los mapas dinámicamente
+function loadMaps() {
+    const mapsContainer = document.getElementById('maps-container');
+    
+    // Verificar si el contenedor existe y si MAPS_DATA está definido
+    if (!mapsContainer || typeof MAPS_DATA === 'undefined') {
+        console.error("No se pudo cargar los mapas: contenedor no encontrado o datos no disponibles");
+        return;
+    }
+    
+    // Limpiar el contenedor
+    mapsContainer.innerHTML = '';
+    
+    // Filtrar solo los mapas visibles y generar el HTML para cada uno
+    MAPS_DATA.filter(map => map.visible).forEach(map => {
+        const mapCard = document.createElement('div');
+        mapCard.className = 'map-card';
+        mapCard.innerHTML = `
+            <div class="map-images">
+                <img src="${map.image}" alt="${map.name} Map" class="map-preview">
+            </div>
+            <h3>${map.name}</h3>
+            <p>${map.description}</p>
+            <div class="map-details">
+                <div class="map-info">
+                    <span>Version: ${map.version}</span>
+                    <span>Size: ${map.size}</span>
+                </div>
+                <div class="price-tag">
+                    <span class="map-price">$${map.price.toFixed(2)}</span>
+                </div>
+                <div class="map-actions">
+                    <button class="btn payment-btn" data-product="${map.id}" data-price="${map.price}">Purchase</button>
+                    <button class="btn preview-btn" data-video="${map.videoUrl}">Watch Video</button>
+                </div>
+            </div>
+        `;
+        
+        mapsContainer.appendChild(mapCard);
+    });
+    
+    // Inicializar los botones después de crear las tarjetas
+    initPreviewButtons();
+    initPaymentButtons();
+}
+
+// Función para inicializar los botones de vista previa
+function initPreviewButtons() {
+    const videoModal = document.getElementById('videoModal');
+    const youtubeFrame = document.getElementById('youtubeFrame');
+    const previewButtons = document.querySelectorAll('.preview-btn');
+    
+    if (previewButtons.length > 0) {
+        previewButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const videoUrl = this.getAttribute('data-video');
+                if (videoUrl && youtubeFrame) {
+                    youtubeFrame.src = videoUrl;
+                    if (videoModal) {
+                        videoModal.style.display = 'flex';
+                        document.body.style.overflow = 'hidden'; // Evitar scroll del body
+                    }
+                }
+            });
+        });
+    }
+}
+
+// Función para inicializar los botones de compra
+function initPaymentButtons() {
+    const paymentButtons = document.querySelectorAll('.payment-btn');
+    if (paymentButtons.length > 0) {
+        paymentButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const productId = this.getAttribute('data-product');
+                
+                // Verificar si GUMROAD_LINKS está definido
+                if (typeof GUMROAD_LINKS === 'undefined') {
+                    console.error('Error: La configuración de Gumroad no está disponible.');
+                    alert('Lo sentimos, ha ocurrido un error al intentar acceder a la tienda.');
+                    return;
+                }
+                
+                // Obtener la URL de Gumroad desde la configuración externa
+                const gumroadUrl = GUMROAD_LINKS[productId];
+                if (gumroadUrl) {
+                    console.log(`Redirigiendo a Gumroad para producto: ${productId}`);
+                    window.open(gumroadUrl, '_blank');
+                } else {
+                    console.error('No se encontró una URL de Gumroad para el producto:', productId);
+                    alert('Lo sentimos, este producto no está disponible actualmente.');
+                }
+            });
+        });
+    }
 }
 
 // Agregamos algunos estilos dinámicos

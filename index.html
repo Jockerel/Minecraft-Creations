@@ -138,90 +138,9 @@
             </script>
         </div>
         
-        <div class="maps-container">
-            <div class="map-card">
-                <div class="map-images">
-                    <img src="img/map-placeholder-1.jpg" alt="Candyland Map" class="map-preview">
-                </div>
-                <h3>Candyland</h3>
-                <p>A stunning 5kx5k map of the "Land of Candy" with different biomes to explore within the theme.</p>
-                <div class="map-details">
-                    <div class="map-info">
-                        <span>Version: 1.18+</span>
-                        <span>Size: 289MB</span>
-                    </div>
-                    <div class="price-tag">
-                        <span class="map-price">$49.99</span>
-                    </div>
-                    <div class="map-actions">
-                        <button class="btn payment-btn" data-product="Candyland" data-price="49.99">Purchase</button>
-                        <button class="btn preview-btn" data-video="https://www.youtube.com/embed/r6b2CQ_peQQ">Watch Video</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="map-card">
-                <div class="map-images">
-                    <img src="img/map-placeholder-2.jpg" alt="Ethia" class="map-preview">
-                </div>
-                <h3>Ethia</h3>
-                <p>An incredible 5kx5k map, ideal for adventures and factions modes, with many biomes from frozen plains to deserts, savannas, and lush forests, with a wide variety of reliefs and points of interest.</p>
-                <div class="map-details">
-                    <div class="map-info">
-                        <span>Version: 1.15+</span>
-                        <span>Size: 339MB</span>
-                    </div>
-                    <div class="price-tag">
-                        <span class="map-price">$49.99</span>
-                    </div>
-                    <div class="map-actions">
-                        <button class="btn payment-btn" data-product="Ethia" data-price="49.99">Purchase</button>
-                        <button class="btn preview-btn" data-video="https://www.youtube.com/embed/example2">Watch Video</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="map-card">
-                <div class="map-images">
-                    <img src="img/map-placeholder-3.jpg" alt="Gefrary" class="map-preview">
-                </div>
-                <h3>Gefrary</h3>
-                <p>A beautiful and aesthetically pleasing 1kx1k round map with a relaxing aura. Ideal for use as an arena.</p>
-                <div class="map-details">
-                    <div class="map-info">
-                        <span>Version: 1.12+</span>
-                        <span>Size: 6MB</span>
-                    </div>
-                    <div class="price-tag">
-                        <span class="map-price">$9.99</span>
-                    </div>
-                    <div class="map-actions">
-                        <button class="btn payment-btn" data-product="Gefrary" data-price="9.99">Purchase</button>
-                        <button class="btn preview-btn" data-video="https://www.youtube.com/embed/example3">Watch Video</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="map-card">
-                <div class="map-images">
-                    <img src="img/map-placeholder-4.jpg" alt="Ashana" class="map-preview">
-                </div>
-                <h3>Ashana</h3>
-                <p>A challenging 1kx1k round desert map, divided into two biomes. Ideal for use as an arena or for faction battles.</p>
-                <div class="map-details">
-                    <div class="map-info">
-                        <span>Version: 1.12+</span>
-                        <span>Size: 6MB</span>
-                    </div>
-                    <div class="price-tag">
-                        <span class="map-price">$9.99</span>
-                    </div>
-                    <div class="map-actions">
-                        <button class="btn payment-btn" data-product="Ashana" data-price="9.99">Purchase</button>
-                        <button class="btn preview-btn" data-video="https://www.youtube.com/embed/example4">Watch Video</button>
-                    </div>
-                </div>
-            </div>
+        <!-- Contenedor donde se cargarán dinámicamente los mapas -->
+        <div class="maps-container" id="maps-container">
+            <!-- Los mapas se cargarán aquí desde JavaScript -->
         </div>
         
         <div class="video-modal" id="videoModal">
@@ -342,6 +261,8 @@
 
     <!-- Configuración de Gumroad -->
     <script src="js/gumroad-config.js"></script>
+    <!-- Datos de los mapas -->
+    <script src="js/maps-data.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html> 

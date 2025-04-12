@@ -10,5 +10,12 @@ const GUMROAD_LINKS = {
     'Ashana': 'https://gumroad.com/l/ashana',
     
     // Mapa personalizado
-    'custom-map': 'https://gumroad.com/l/custom-minecraft-map'
+    'custom-map': 'https://es.fiverr.com/jockerel/terraform-your-minecraft-world',
+
+    // IDs de los mapas y sus enlaces de compra en Gumroad
+    'candyland': 'https://jockerel.gumroad.com/l/candyland',
+    'ethia': 'https://jockerel.gumroad.com/l/ethia',
+    'gefrary': 'https://jockerel.gumroad.com/l/glnyq',
+    'ashana': 'https://jockerel.gumroad.com/l/ashana',
+    'coming-soon': 'https://jockerel.gumroad.com/l/coming-soon'
 }; 
