@@ -13,7 +13,7 @@ const GUMROAD_LINKS = {
     'custom-map': 'https://es.fiverr.com/jockerel/terraform-your-minecraft-world',
 
     // IDs de los mapas y sus enlaces de compra en Gumroad
-    'candyland': 'https://jockerel.gumroad.com/l/candyland',
+    'candyland': 'https://jockerel.gumroad.com/l/qjvxpq',
     'ethia': 'https://jockerel.gumroad.com/l/ethia',
     'gefrary': 'https://jockerel.gumroad.com/l/glnyq',
     'ashana': 'https://jockerel.gumroad.com/l/ahrlps',

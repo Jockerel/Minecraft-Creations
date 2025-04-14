@@ -8,8 +8,8 @@ const MAPS_DATA = [
         version: "1.18+",
         size: "289MB",
         price: 49.99,
-        videoUrl: "https://www.youtube.com/embed/r6b2CQ_peQQ",
-        visible: false // Este mapa se mostrará en la página
+        videoUrl: "https://www.youtube.com/embed/6uuJqUm6b0s",
+        visible: true // Este mapa se mostrará en la página
     },
     {
         id: "ethia",
