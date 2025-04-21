@@ -8,6 +8,7 @@ const GUMROAD_LINKS = {
     'Ethia': 'https://gumroad.com/l/ethia',
     'Gefrary': 'https://jockerel.gumroad.com/l/glnyq',
     'Ashana': 'https://gumroad.com/l/ashana',
+    'Lumian': 'https://jockerel.gumroad.com/l/tbgpek',
     
     // Mapa personalizado
     'custom-map': 'https://es.fiverr.com/jockerel/terraform-your-minecraft-world',
@@ -17,5 +18,6 @@ const GUMROAD_LINKS = {
     'ethia': 'https://jockerel.gumroad.com/l/ethia',
     'gefrary': 'https://jockerel.gumroad.com/l/glnyq',
     'ashana': 'https://jockerel.gumroad.com/l/ahrlps',
+    'Lumian': 'https://jockerel.gumroad.com/l/tbgpek',
     'coming-soon': 'https://jockerel.gumroad.com/l/coming-soon'
 }; 

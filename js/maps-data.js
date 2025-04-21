@@ -45,6 +45,17 @@ const MAPS_DATA = [
         visible: true // Este mapa se mostrará en la página
     },
     {
+        id: "Lumian",
+        name: "Lumian",
+        image: "img/map-placeholder-5.jpg",
+        description: "A 1,5k x 1,5k map perfect for exploring, with unique and engaging biomes. Specially designed to be a Hunger Games arena.",
+        version: "1.19+",
+        size: "51MB",
+        price: 14.99,
+        videoUrl: "https://www.youtube.com/embed/k1WVKzERD4U",
+        visible: true // Este mapa NO se mostrará en la página porque visible es false
+    },
+    {
         id: "coming-soon",
         name: "Mystery Map",
         image: "img/map-placeholder-5.jpg",
