@@ -9,6 +9,7 @@ const GUMROAD_LINKS = {
     'Gefrary': 'https://jockerel.gumroad.com/l/glnyq',
     'Ashana': 'https://gumroad.com/l/ashana',
     'Lumian': 'https://jockerel.gumroad.com/l/tbgpek',
+    'Westeros - Games of Thrones': 'https://jockerel.gumroad.com/l/kczgnl',
     
     // Mapa personalizado
     'custom-map': 'https://es.fiverr.com/jockerel/terraform-your-minecraft-world',
@@ -19,5 +20,6 @@ const GUMROAD_LINKS = {
     'gefrary': 'https://jockerel.gumroad.com/l/glnyq',
     'ashana': 'https://jockerel.gumroad.com/l/ahrlps',
     'Lumian': 'https://jockerel.gumroad.com/l/tbgpek',
+    'Westeros - Games of Thrones': 'https://jockerel.gumroad.com/l/kczgnl',
     'coming-soon': 'https://jockerel.gumroad.com/l/coming-soon'
 }; 

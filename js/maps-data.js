@@ -56,6 +56,17 @@ const MAPS_DATA = [
         visible: true // Este mapa NO se mostrará en la página porque visible es false
     },
     {
+        id: "Westeros - Games of Thrones",
+        name: "Westeros - Games of Thrones",
+        image: "img/map-placeholder-6.jpg",
+        description: "An incredible 14k x 7k map of the continent of Westeros (from the GOT series), with all the areas of interest, geographical accuracy, and with free flat areas for the construction of castles and cities.",
+        version: "1.20+",
+        size: "1,3GB",
+        price: 99.99,
+        videoUrl: "https://www.youtube.com/embed/example5",
+        visible: true // Este mapa NO se mostrará en la página porque visible es false
+    },
+    {
         id: "coming-soon",
         name: "Mystery Map",
         image: "img/map-placeholder-5.jpg",
@@ -66,4 +77,5 @@ const MAPS_DATA = [
         videoUrl: "https://www.youtube.com/embed/example5",
         visible: false // Este mapa NO se mostrará en la página porque visible es false
     }
+    
 ]; 
