@@ -67,6 +67,17 @@ const MAPS_DATA = [
         visible: true // Este mapa NO se mostrará en la página porque visible es false
     },
     {
+        id: "Oswen",
+        name: "Oswen",
+        image: "img/map-placeholder-7.jpg",
+        description: "A beautiful and attractive 2k x 2k map, with several biomes to explore, and an excellent balance between them!",
+        version: "1.21.1+",
+        size: "90MB",
+        price: 19.99,
+        videoUrl: "https://www.youtube.com/embed/example5",
+        visible: true // Este mapa NO se mostrará en la página porque visible es false
+    },
+    {
         id: "coming-soon",
         name: "Mystery Map",
         image: "img/map-placeholder-5.jpg",
